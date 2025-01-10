@@ -7,8 +7,6 @@ function solution(wallpaper) {
     let left = [];
     let right = [];
     let btm = [];
-    let dragStart = [];
-    let dragEnd = [];
     let hang = 0;
     
     wallpaper.forEach((item,idx) => {
@@ -29,9 +27,6 @@ function solution(wallpaper) {
     
     left = obj.fileState[0];
     right = obj.fileState[obj.fileState.length-1];
-    
-    dragStart = [top[0],left[1]];
-    dragEnd = [btm[0]+1,right[1]+1];
     
     return [top[0],left[1],btm[0]+1,right[1]+1];
     
