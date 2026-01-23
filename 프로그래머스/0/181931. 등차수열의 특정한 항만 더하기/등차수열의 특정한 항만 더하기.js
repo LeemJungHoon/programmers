@@ -1,11 +1,7 @@
 function solution(a, d, included) {
     
-    let sum = 0;
-    
-    included.forEach((item ,idx) => {
-        item ? sum += a + d*(idx) : 0;
-    })
-    
-    return sum;
+    return included.reduce((acc, cur, idx) => {
+        return cur ? acc += a + d*idx : acc;
+    },0)
     
 }
