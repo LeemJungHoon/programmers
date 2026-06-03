@@ -1,7 +1,11 @@
 function solution(myString, pat) {
-    let cnt = 0;
-    for(let i=0; i<=myString.length; i++){
-        myString.slice(i, i+pat.length) === pat ? cnt++ : 0;
+    
+    let result = 0;
+    
+    for(let i=0; i<=myString.length - pat.length; i++){
+        console.log(myString.slice(i,i+pat.length));
+        myString.slice(i,i+pat.length) === pat ? result++ : 0;
     }
-    return cnt;
+    
+    return result;
 }
