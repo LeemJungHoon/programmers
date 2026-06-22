@@ -1,15 +1,6 @@
 function solution(arr, k) {
     
-    const result = [];
+    const result = arr.sort((a,b) => a-b).slice(0,k);
     
-    arr.forEach((item,idx) => {
-        result.includes(item)  ? null : result.push(item);
-    })
-    
-    
-    for(let i=result.slice(0,k).length; i<k; i++){
-        result.push(-1);
-    }
-    
-    return result.slice(0,k);
+    console.log(result);
 }
