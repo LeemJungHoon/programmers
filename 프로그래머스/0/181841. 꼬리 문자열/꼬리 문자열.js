@@ -1,5 +1,3 @@
 function solution(str_list, ex) {
-    return str_list.filter((item,idx) => {
-        return !item.includes(ex)
-    }).join("");
+    return str_list.filter((item) => !item.includes(ex)).join("");
 }
