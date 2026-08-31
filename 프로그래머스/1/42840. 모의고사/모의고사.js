@@ -1,21 +1,27 @@
 function solution(answers) {
     
-    const arr1 =[1,2,3,4,5];
-    const arr2 =[2,1,2,3,2,4,2,5];
-    const arr3 =[3,3,1,1,2,2,4,4,5,5];
+    const obj = {
+        "n1" : [1, 2, 3, 4, 5],
+        "n2" : [2, 1, 2, 3, 2, 4, 2, 5],
+        "n3" : [3, 3, 1, 1, 2, 2, 4, 4, 5, 5],
+        "1" : 0,
+        "2" : 0,
+        "3" : 0,
+    }
     
-    let cntNums = new Array(3).fill(0);
+    const result = [];
     
     answers.forEach((item,idx) => {
-        item === arr1[idx%arr1.length] ? cntNums[0]++ : 0;
-        item === arr2[idx%arr2.length] ? cntNums[1]++ : 0;
-        item === arr3[idx%arr3.length] ? cntNums[2]++ : 0;
-    })
+        obj.n1[idx%5] === item ? obj[1]++ : 0;
+        obj.n2[idx%8] === item ? obj[2]++ : 0;
+        obj.n3[idx%10] === item ? obj[3]++ : 0;
+    });
     
-    let maxNum = Math.max(cntNums[0],cntNums[1],cntNums[2]);
+    let maxNum = Math.max(obj[1],obj[2],obj[3])
     
-    return cntNums.map((item,idx) => {
-        return item === maxNum ? idx+1 : null;
-    }).filter((_) => _);
+    obj[1] === maxNum ? result.push(1) : 0;
+    obj[2] === maxNum ? result.push(2) : 0;
+    obj[3] === maxNum ? result.push(3) : 0;
     
+    return result;
 }
