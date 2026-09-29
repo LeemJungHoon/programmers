@@ -8,5 +8,4 @@ function solution(k, score) {
         return Math.min(...arr);
     })
     
-    return result;
 }
