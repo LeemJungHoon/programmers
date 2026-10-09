@@ -1,57 +1,40 @@
 function solution(s) {
+    let arrS = s;
+    let sLength = arrS.length;
     let cnt = 0;
-    let rotated = s;
-
-    for (let i = 0; i < s.length; i++) {
-        const stack = [];
+    
+    
+    for(let i=0; i<sLength; i++){
         let bTrue = true;
-
-        for (const item of rotated) {
-            if (
-                item === "[" ||
-                item === "(" ||
-                item === "{"
-            ) {
+        const stack = [];
+        
+        for(let item of arrS){
+            
+            if(item === "[" || item === "(" || item === "{"){
                 stack.push(item);
-            } else {
-                switch (item) {
+            }else{
+                switch(item){
                     case "]":
-                        if (stack[stack.length - 1] === "[") {
-                            stack.pop();
-                        } else {
-                            bTrue = false;
-                        }
+                        stack[stack.length-1] === "[" ? stack.pop() : bTrue = false;
                         break;
-
-                    case ")":
-                        if (stack[stack.length - 1] === "(") {
-                            stack.pop();
-                        } else {
-                            bTrue = false;
-                        }
-                        break;
-
                     case "}":
-                        if (stack[stack.length - 1] === "{") {
-                            stack.pop();
-                        } else {
-                            bTrue = false;
-                        }
+                        stack[stack.length-1] === "{" ? stack.pop() : bTrue = false;
+                        break;
+                    case ")":
+                        stack[stack.length-1] === "(" ? stack.pop() : bTrue = false;
                         break;
                 }
             }
-
-            if (!bTrue) {
+            if(!bTrue){
                 break;
             }
+            
         }
-
-        if (bTrue && stack.length === 0) {
-            cnt++;
-        }
-
-        rotated = rotated.slice(1) + rotated[0];
+        stack.length === 0 && bTrue ? cnt++ : null;
+        
+        arrS = arrS.slice(1) + arrS.slice(0,1);
     }
-
+    
     return cnt;
+    
 }
